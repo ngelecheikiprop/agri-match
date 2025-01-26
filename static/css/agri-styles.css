@@ -1,0 +1,222 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8fdf3; /* Light green tint for agriculture theme */
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #006400; /* Primary Green */
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: #ffffff;
+}
+
+.navbar-brand:hover {
+    color: #cddc39; /* Lighter green accent */
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 10px 15px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #32a852; /* Brighter green hover */
+    border-radius: 8px;
+    color: #ffffff;
+}
+
+/* Hero Section Styles */
+.hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero img {
+    margin-bottom: 15px;
+}
+
+/* Card Styles */
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    padding: 20px;
+    font-size: 1rem;
+    color: #4d4d4d;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    color: #2f4f2f; /* Dark green */
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #5e6e5e; /* Muted green for text */
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.btn-success {
+    background-color: #32a852;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #28a745;
+    transform: translateY(-3px);
+}
+
+.btn-success:active {
+    background-color: #218838;
+    transform: translateY(0);
+}
+
+.btn-outline-success {
+    color: #32a852;
+    border: 2px solid #32a852;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline-success:hover {
+    background-color: #32a852;
+    color: #ffffff;
+}
+
+/* Alerts */
+.alert-success {
+    background-color: #eafbe6; /* Soft green */
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #004d00; /* Dark green */
+    color: #ffffff;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+footer a {
+    color: #cddc39; /* Light green accent */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Inputs and Forms */
+input, textarea {
+    border-radius: 8px;
+    border: 1px solid #dddddd;
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: #32a852;
+    outline: none;
+}
+
+/* Carousel */
+.carousel-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 500px;
+    filter: brightness(80%);
+    transition: filter 0.3s ease;
+}
+
+.carousel-item:hover img {
+    filter: brightness(100%);
+}
+
+.carousel-caption {
+    color: #cddc39;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+/* Featured Listings Section */
+.featured-listings .card img {
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
+
+    .card {
+        margin: 10px;
+    }
+
+    .hero {
+        height: 70vh; /* Adjust height for smaller screens */
+    }
+
+    .carousel-item img {
+        height: 300px;
+    }
+}
