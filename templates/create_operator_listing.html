@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center my-4">List as an Operator</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg rounded-lg">
+                <div class="card-body">
+                    <h4 class="mb-4 text-center text-primary">Fill in the details to create your listing</h4>
+                    <form method="POST" enctype="multipart/form-data" id="create-listing-form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        {% if form.errors %}
+                            <div class="error">
+                                <ul>
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+{#                        <!-- Manually Render Form Fields -->#}
+{#                        <div class="form-group">#}
+{#                            <label for="id_name">Name</label>#}
+{#                            {{ form.name }}#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="id_bio">Bio</label>#}
+{#                            {{ form.bio }}#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="id_certification">Certification</label>#}
+{#                            {{ form.certification }}#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="id_hourly_rate">Hourly Rate</label>#}
+{#                            {{ form.hourly_rate }}#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="id_available_from">Available From</label>#}
+{#                            {{ form.available_from }}#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label for="id_available_to">Available To</label>#}
+{#                            {{ form.available_to }}#}
+{#                        </div>#}
+{##}
+{#                        <!-- Image Input Field -->#}
+{#                        <div class="form-group">#}
+{#                            <label for="id_profile_picture">Profile Picture</label>#}
+{#                            {{ form.profile_picture }}#}
+{#                        </div>#}
+
+                        <!-- Image Preview -->
+                        <div id="imagePreview" style="margin-top: 10px; display: none;">
+                            <img id="previewImage" src="" alt="Image Preview" style="max-width: 200px;"/>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-success btn-block mt-4">Create Listing</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Image preview function
+        const imageInput = document.getElementById('id_profile_picture');
+        const previewImage = document.getElementById('previewImage');
+        const imagePreviewDiv = document.getElementById('imagePreview');
+
+        imageInput.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    previewImage.src = reader.result;
+                    imagePreviewDiv.style.display = 'block';  // Show the preview div
+                };
+                reader.readAsDataURL(file);
+            } else {
+                imagePreviewDiv.style.display = 'none';  // Hide the preview if no file is selected
+            }
+        });
+    });
+</script>
+{% endblock %}
