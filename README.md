@@ -1,14 +1,3 @@
-##Agri-Match
-##Overview
-Agri-Match is a platform designed to facilitate the renting of agricultural machinery. It connects three key groups of people:
-
-Machine Owners: Those who own agricultural machinery and want to rent it out.
-
-Operators: Skilled individuals who can operate the machinery.
-
-Renters: Farmers or businesses looking to rent machinery for their agricultural needs.
-
-Users create an account, specify their role (owner, operator, or renter), and can then list machines, offer their operating services, or rent machinery. Agri-Match simplifies the process of connecting these groups, ensuring efficient and transparent transactions.
 
 
 # Agri-Match 🌾
