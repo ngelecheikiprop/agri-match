@@ -20,6 +20,6 @@ To run the project locally, follow these steps:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/ngelecheikiprop/agri-match.git
+   git clone https://github.com/wbsjael/agri-match.git
    cd agri-match
    python3 manage.py runserver
