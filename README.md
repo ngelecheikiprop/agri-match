@@ -16,10 +16,10 @@ Agri-Match is built using modern web technologies:
 ## Installation 🏗️
 To run the project locally, follow these steps:
 
-cd 1. **Clone the Repository**
+1. **Clone the Repository**
    ```bash
-   git clone https://github.com/wbsjael/agri-match.git
-   cd agri-match
+   git clone https://github.com/wbsjael/agri-match.git c:/Users/user/agri-match
+   cd c:/Users/user/agri-match
    ```
 
 2. **Install Dependencies**
