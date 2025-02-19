@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY', default='your-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['HingaN.pythonanywhere.com', 'localhost', '127.0.0.1', 'db94-41-90-44-86.ngrok-free.app']
 
@@ -177,14 +177,14 @@ LOGGING = {
         'django.request': {
             'handlers': ['console'],
             'level': 'DEBUG',
-            'propagate': True,
+            'propagate': False,
         },
     },
 }
 
 ACCOUNT_PASSWORD_RESET_DONE_URL = 'password_reset_done'
 
-ADMIN_EMAIL = 'natashahinga58@gmail.com'
+ADMIN_EMAIL = 'jaelasap18@gmail.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Or your email provider's SMTP server
