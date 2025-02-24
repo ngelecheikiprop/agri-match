@@ -183,7 +183,7 @@ LOGGING = {
 
 ACCOUNT_PASSWORD_RESET_DONE_URL = 'password_reset_done'
 
-ADMIN_EMAIL = 'natashahinga58@gmail.com'
+ADMIN_EMAIL = 'jaelasap18@gmail.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # Or your email provider's SMTP server
