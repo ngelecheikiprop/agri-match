@@ -15,10 +15,7 @@ import dj_database_url
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+BASE_DIR = Path(_file_).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY', default='your-secret-key')
@@ -30,24 +27,21 @@ ALLOWED_HOSTS = ['HingaN.pythonanywhere.com', 'localhost', '127.0.0.1', 'db94-41
 
 # Application definition
 INSTALLED_APPS = [
-    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_bootstrap4',
+    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'crispy_bootstrap4',
     'agri_match_app.apps.AgriMatchAppConfig',
     'django_extensions',
-
 ]
-# INSTALLED_APPS += ['debug_toolbar']
-# MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,7 +51,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
     'agri_match_app.middleware.RoleRequiredMiddleware',
@@ -86,7 +79,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'agri_match.wsgi.application'
 
-# Database configuration for SQLite
+# Database configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -118,13 +111,13 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Static files
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'agri_match_app', '../static'),  # Replace 'agri_match_app' with the actual app name
+    os.path.join(BASE_DIR, 'agri_match_app', '../static'),
 ]
+
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -134,22 +127,22 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
+
 LOGIN_URL = 'account_login'
-LOGIN_REDIRECT_URL = '/'  # Where to redirect after successful login
-ACCOUNT_LOGOUT_ON_GET = True  # Automatically log out user on GET request
-ACCOUNT_EMAIL_VERIFICATION = "none"  # Email verification on registration
-ACCOUNT_EMAIL_REQUIRED = False  # Email is required for registration
-ACCOUNT_SIGNUP_PASSWORD_ENTER = False  # Optional: skip password entry on signup
-ACCOUNT_AUTHENTICATED_REDIRECT_URL = '/'  # Redirect authenticated users to the homepage
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_SIGNUP_PASSWORD_ENTER = False
+ACCOUNT_AUTHENTICATED_REDIRECT_URL = '/'
 ACCOUNT_SIGNUP_REDIRECT_URL = '/register-role/'
 ACCOUNT_LOGIN_ON_SIGNUP = True
 
+# Social account providers
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-        'SCOPE': ['profile', 'email'],
+        'SCOPE': ['email', 'profile'],
         'AUTH_PARAMS': {'access_type': 'online'},
-        'OAUTH_PKCE_ENABLED': True,
-        'VERIFIED_EMAIL': True,
     }
 }
 
@@ -157,11 +150,10 @@ SOCIALACCOUNT_PROVIDERS = {
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
-# Correct Redirect URI
+#  Redirect URI
 SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'http://127.0.0.1:8000/accounts/google/login/callback/'
 
-SITE_ID = 2  # Required for allauth, set to your Site's ID in Django admin
-
+SITE_ID = 1
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGGING = {
@@ -186,15 +178,14 @@ ACCOUNT_PASSWORD_RESET_DONE_URL = 'password_reset_done'
 ADMIN_EMAIL = 'jaelasap18@gmail.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Or your email provider's SMTP server
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')  # Fetch from .env
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')  # Fetch from .env
-DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER')  # Same as EMAIL_HOST_USER
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER')
 
 CSRF_COOKIE_SECURE = False
 CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'http://localhost']
 CSRF_FAILURE_VIEW = 'django.views.csrf.csrf_failure'
 CSRF_COOKIE_HTTPONLY = False
-
